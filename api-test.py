@@ -2,25 +2,23 @@ import requests
 
 
 # Replace with your actual API key
-API_KEY = "YOUR_API_KEY"
+API_KEY = "your_api_key"
 
 # Replace with the song you want to search
-song_title = "Blinding Lights"
+song_title = "metallica"
 
 # Base URL from GetSongBPM API documentation
-url = "https://api.getsongbpm.com/search/"
+url = "https://api.getsongbpm.co/search/"
 
 # Parameters for the GET request
 params = {
     "api_key": API_KEY,
-    "type": "search",      # depending on API docs, may be "search" or "song"
-    "query": song_title
+    "type": "artist",      # depending on API docs, may be "search" or "song"
+    "lookup": song_title
 }
 
 try:
-    response = requests.get(url, params=params, headers={
-        "User-Agent": "Mozilla/5.0"
-    })
+    response = requests.get(url, params=params)
     response.raise_for_status()  # raise error for bad status codes
 
     data = response.json()
